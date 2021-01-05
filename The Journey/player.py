@@ -1,7 +1,5 @@
 import pygame
 from projectile import Projectile
-import projectile
-import math
 
 
 # creer un class = joueur
