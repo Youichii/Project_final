@@ -6,6 +6,10 @@ import pygame
 class Monster(pygame.sprite.Sprite):
 
     def __init__(self, game):
+        """Constructor of the class"""
+        """PRE:/
+           POST: Buils the constructor of the class
+        """
 
         super().__init__()
         self.game = game
@@ -14,31 +18,43 @@ class Monster(pygame.sprite.Sprite):
         self.attack = 0.3
         self.image = pygame.image.load('im/robot-4.png')
         self.rect = self.image.get_rect()
-        self.rect.x = 1400  # + random.randint(0, 300)
+        self.rect.x = 1400
         self.rect.y = 450
-        self.velocity = 1  # =random.randint(1, 3)
+        self.velocity = 1
 
     def damage(self, amount):
-        # infliger les degats
+        """Define a damage for the class
+       PRE:/
+       POST: Substract the parameter to the attribut health. If health <= initilise with the attribut max_health
+
+       """
         self.health -= amount
 
-        # Si son nouveau nombre de point de vie est >= 0
         if self.health <= 0:
-            # Reapparaitre comme un nouveau monstre
+
             print(self.rect.x)
-            self.rect.x = 1400  # + random.randint(0, 300)
-            # self.velocity = random.randint(1, 3)
+            self.rect.x = 1400
             self.health = self.max_health
             self.game.score.increase_score()
 
 
     def update_health_bar(self, surface):
-        # dessiner la bar de vie
+        """Draw a health bar
+        PRE:/
+        POST: Drawing with a pygame modul a health bar with attributs healt and max_healt as parameters
+        """
+
+
         pygame.draw.rect(surface, (60, 63, 60), [self.rect.x + 10, self.rect.y - 20, self.max_health, 5])
         pygame.draw.rect(surface, (111, 210, 46), [self.rect.x + 10, self.rect.y - 20, self.health, 5])
 
     def forward(self):
-        # le deplacement se fait que s'il n"y a pas de collision avec joueur
+        """Moving the monster forward
+        PRE:/
+        POST: If there is no collision between the monster and player the monster will move
+              else, we apply the method damage() 
+        """
+
         if not self.game.check_collision(self, self.game.all_players):
             self.rect.x -= self.velocity
             if self.rect.x < -100:
@@ -48,7 +64,5 @@ class Monster(pygame.sprite.Sprite):
                 self.rect.x = 1400
                 self.velocity = 1
 
-
-        # si le monstre est en collision avec le joueur
         else:
             self.game.player.damage(self.attack)
