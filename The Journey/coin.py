@@ -1,7 +1,7 @@
 import pygame
 import random
 
-
+#test
 
 class Coin(pygame.sprite.Sprite):  # Création d'une calsse pour les "Coins"
 
