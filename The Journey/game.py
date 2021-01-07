@@ -8,6 +8,12 @@ from coin import Coin
 # classe du jeu
 class Game:
     def __init__(self):
+        """Constructor of the class Game"""
+        """
+        PRE:/
+        POST: Build the class
+            
+        """
 
         # definir si notre jeu a commencé
         self.is_playing = False
@@ -23,21 +29,39 @@ class Game:
         self.all_players.add(self.player)
         self.pressed = {}
 
-    # pour relancer le jeu avec les monstres quand on meurt
+
     def start(self):
+        """Starting the game"""
+        """
+        PRE:/
+        POST: Initialize the game with the instance player monster
+        """
         self.is_playing = True
-        self.spawn_monster()  # appel de la methode
+        self.spawn_monster()
         self.score.points = 0
         self.player.rect.y = 450
         self.player.rect.x = 400
 
     def game_over(self):
+        """Define a game over"""
+        """
+        PRE:/
+        POST: Put the parameter is_playing in "transition" and initialize parameters health and monster
+        """
         # remettre le jeu à 0
         self.all_monsters = pygame.sprite.Group()
         self.player.health = self.player.max_health
         self.is_playing = "transition"
 
     def update(self, screen):
+        """Update the Game screen"""
+        """
+        PRE:/
+        POST: Take a parameter 
+              Applies on screen the images of the attributs (player, monster, coin, projectile,...)
+              Verify wich key is press to let the instance player use the metho move
+              
+        """
         # appliquer image du joueur
         screen.blit(self.player.image, self.player.rect)
         screen.blit(self.coin.image, self.coin.rect)
@@ -70,7 +94,6 @@ class Game:
         self.all_monsters.draw(screen)
 
         # verifier déplacement du joueur
-
         if self.pressed.get(pygame.K_RIGHT) and self.player.rect.x + self.player.rect.width < screen.get_width():
             self.player.move_right()
         elif self.pressed.get(pygame.K_LEFT) and self.player.rect.x > 0:
@@ -79,8 +102,17 @@ class Game:
             self.player.jump()
 
     def check_collision(self, sprite, group):
+        """Check if there is collision between two groups"""
+        """
+        PRE:/ 
+        POST: Return False if two objects didn't collide, otherwise return True
+        """
         return pygame.sprite.spritecollide(sprite, group, False)
 
     def spawn_monster(self):
+        """Spawn a monster """
+        """PRE:/
+           POST: New object of class Monster. Add to the attribut 
+        """
         monster = Monster(self)
-        self.all_monsters.add(monster)  # ajoute un monstre au groupe de monstres
+        self.all_monsters.add(monster)
