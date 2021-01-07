@@ -69,3 +69,7 @@ class Player(pygame.sprite.Sprite):
                 elif self.game.check_collision(self, self.game.all_monsters):
                     self.is_jumping = 0
                     self.jump_count = 1
+
+    def attack_up(self):
+        self.velocity += 2
+        print(self.attack)

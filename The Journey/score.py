@@ -1,10 +1,13 @@
+from player import Player
+
+
 class Score:
     def __init__(self, game):
         self.local_score = 0
         self.best_score = 0
         self.points = 0
         self.game = game
-
+        self.player = Player(self)
 
     def update_score(self):
 
@@ -18,4 +21,7 @@ class Score:
 
     def increase_score(self):
         self.points += 1
+        if self.points >= 1:
+            self.player.attack_up()
+            print("score")
         # si le joueur n'a plus de point de vie

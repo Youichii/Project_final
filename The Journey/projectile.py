@@ -1,6 +1,5 @@
 import pygame
 
-
 # definir la classe qui va gerer le projectile du joueur
 
 class Projectile(pygame.sprite.Sprite):
@@ -37,7 +36,8 @@ class Projectile(pygame.sprite.Sprite):
             # supprimer le projectile
             self.remove()
             # infliger des degats
-            monster.damage(self.player.attack)  # le monstre subit des degats selon les attacks
+            monster.damage(self.player.attack) # le monstre subit des degats selon les attacks
+            print(self.player.attack, "  atk" )
 
         # verifier si notre projectile n'est plus present sur l'ecran
         if self.rect.x > 1080:
