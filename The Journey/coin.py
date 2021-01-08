@@ -1,12 +1,12 @@
 import pygame
 import random
 
-#test
+
+# test
 
 class Coin(pygame.sprite.Sprite):  # Création d'une calsse pour les "Coins"
 
     def __init__(self, game):
-
         super().__init__()
         self.game = game
         self.image = pygame.image.load('im/money.png')

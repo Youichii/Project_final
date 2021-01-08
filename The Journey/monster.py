@@ -31,19 +31,16 @@ class Monster(pygame.sprite.Sprite):
         self.health -= amount
 
         if self.health <= 0:
-
             print(self.rect.x)
             self.rect.x = 1400
             self.health = self.max_health
             self.game.score.increase_score()
-
 
     def update_health_bar(self, surface):
         """Draw a health bar
         PRE:/
         POST: Drawing with a pygame modul a health bar with attributs healt and max_healt as parameters
         """
-
 
         pygame.draw.rect(surface, (60, 63, 60), [self.rect.x + 10, self.rect.y - 20, self.max_health, 5])
         pygame.draw.rect(surface, (111, 210, 46), [self.rect.x + 10, self.rect.y - 20, self.health, 5])

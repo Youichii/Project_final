@@ -30,7 +30,6 @@ class Game:
         self.all_players.add(self.player)
         self.pressed = {}
 
-
     def start(self):
         """Starting the game"""
         """
@@ -116,6 +115,7 @@ class Game:
            POST: New object of class Monster. Add to the attribut 
         """
         monster = Monster(self)
+
         monster2 = Monster(self)
         monster2.rect.y = random.randint(100, 200)
         monster2.rect.x = 1300

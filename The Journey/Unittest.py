@@ -1,8 +1,5 @@
 import unittest
-from player import Player
 from monster import Monster
-from score import Score
-from coin import Coin
 import pygame
 
 
