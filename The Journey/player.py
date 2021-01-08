@@ -1,6 +1,7 @@
 import pygame
 from projectile import Projectile
 
+
 # creer un class = joueur
 
 class Player(pygame.sprite.Sprite):
