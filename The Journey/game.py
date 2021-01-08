@@ -3,6 +3,7 @@ from player import Player
 from monster import Monster
 from score import Score
 from coin import Coin
+import random
 
 
 # classe du jeu
@@ -115,4 +116,10 @@ class Game:
            POST: New object of class Monster. Add to the attribut 
         """
         monster = Monster(self)
-        self.all_monsters.add(monster)
+        monster2 = Monster(self)
+        monster2.rect.y = random.randint(100, 200)
+        monster2.rect.x = 1300
+        monster2.velocity = 1.5
+        monster2.image = pygame.image.load('im/dragon.png')
+
+        self.all_monsters.add(monster, monster2)

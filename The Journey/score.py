@@ -37,5 +37,4 @@ class Score:
         self.points += 1
         if self.points >= 1:
             self.player.attack_up()
-            print("score")
         # si le joueur n'a plus de point de vie

@@ -59,10 +59,10 @@ class Monster(pygame.sprite.Sprite):
             self.rect.x -= self.velocity
             if self.rect.x < -100:
                 self.rect.x = -100
-                self.velocity = -1
+                self.velocity = -self.velocity
             if self.rect.x > 1400:
                 self.rect.x = 1400
-                self.velocity = 1
+                self.velocity = -self.velocity
 
         else:
             self.game.player.damage(self.attack)

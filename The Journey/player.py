@@ -62,7 +62,7 @@ class Player(pygame.sprite.Sprite):
                 if self.rect.y == 100:
                     self.is_jumping = "max_height"
             elif self.is_jumping == "max_height":
-                self.rect.y += 1
+                self.rect.y += 2
                 if self.rect.y == 450:
                     self.is_jumping = 0
                     self.jump_count = 1
@@ -71,5 +71,4 @@ class Player(pygame.sprite.Sprite):
                     self.jump_count = 1
 
     def attack_up(self):
-        self.velocity += 2
-        print(self.attack)
+        self.attack += 10
