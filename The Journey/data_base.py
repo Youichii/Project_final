@@ -32,7 +32,7 @@ def show_score(player_id):
     if player_id == "all":
         sql_best = "SELECT * FROM ALL_SCORES order by Pseudo"
     else:
-        sql_best = "SELECT * FROM ALL_SCORES WHERE Pseudo = '" + player_id + "' order by Pseudo"
+        sql_best = "SELECT Pseudo, MAX(Score) FROM ALL_SCORES WHERE Pseudo = '" + player_id + "' order by Pseudo"
     c.execute(sql_best)
     rows = c.fetchall()
     for row in rows:
