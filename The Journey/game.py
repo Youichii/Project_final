@@ -120,6 +120,7 @@ class Game:
         monster2.rect.y = random.randint(100, 200)
         monster2.rect.x = 1300
         monster2.velocity = 1.5
+        monster2.attack = 50
         monster2.image = pygame.image.load('im/dragon.png')
 
         self.all_monsters.add(monster, monster2)
