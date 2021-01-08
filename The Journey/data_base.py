@@ -65,6 +65,6 @@ elif sys.argv[1] == "delete":
     response = input("Are you sure you want to delete all score? YES / NO : ")
     if response == "YES":
         drop_table()
-    else :
+    else:
         print("Wrong response")
         print("Data not deleted")
