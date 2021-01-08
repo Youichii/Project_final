@@ -1,11 +1,16 @@
 import pygame
 from projectile import Projectile
 
-
 # creer un class = joueur
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
+        """
+        Constructor of the class
+        PRE:/
+        POST: Take game as parameter. Build the constructor of the class
+
+        """
 
         super().__init__()
         self.y = 500
@@ -23,10 +28,14 @@ class Player(pygame.sprite.Sprite):
         self.jump_count = 1
 
     def damage(self, amount):
+        """Define a damage for the class
+       PRE:/
+       POST: Substract the parameter to the attribut health
+
+       """
         if self.health - amount > amount:
             self.health -= amount
         else:
-            # si le joueur n'a plus de points de vie
             self.game.score.local_score = self.game.score.points
             if self.game.score.best_score < self.game.score.points:
                 self.game.score.best_score = self.game.score.points
@@ -34,24 +43,42 @@ class Player(pygame.sprite.Sprite):
             self.game.score.points = 0
 
     def update_health_bar(self, surface):
+        """Draw a health bar
+        PRE:/
+        POST: Drawing with a pygame modul a health bar with attributs healt and max_healt as parameters
+        """
 
-        # dessiner la bar de vie
         pygame.draw.rect(surface, (60, 63, 60), [self.rect.x + 10, self.rect.y - 20, self.max_health, 5])
         pygame.draw.rect(surface, (111, 210, 46), [self.rect.x + 10, self.rect.y - 20, self.health, 5])
 
     def launch_projectile(self):
+        """Launch projectiles
+        PRE:/
+        POST: Use object of the class and add it to the attribut group
+        """
 
         self.all_projectile.add(Projectile(self))
 
     def move_right(self):
-        # si le joueur n'est pas en collision avec un monstre
+        """Moving the player to the right
+        PRE:/
+        POST: If there is no collision between player and monster group, the player will add to his x position a velocity
+        """
         if not self.game.check_collision(self, self.game.all_monsters):
             self.rect.x += self.velocity
 
     def move_left(self):
+        """Moving the player to the left
+        PRE:/
+        POST: Adding to the x position of the player his velocity
+        """
         self.rect.x -= self.velocity
 
     def jump(self):
+        """Allow the player to jump
+        PRE:/
+        POST:Change the state of the attribut is_jumping to 1
+        """
         self.is_jumping = 1
 
     def jump_update(self):

@@ -49,7 +49,7 @@ class Monster(pygame.sprite.Sprite):
         """Moving the monster forward
         PRE:/
         POST: If there is no collision between the monster and player the monster will move
-              else, we apply the method damage() 
+              else, we apply the method damage()
         """
 
         if not self.game.check_collision(self, self.game.all_players):

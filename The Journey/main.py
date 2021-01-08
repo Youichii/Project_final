@@ -4,6 +4,11 @@ import data_base
 
 
 def begin_game():
+    """Begining the game
+    PRE: Enter a pseudo
+    POST: Display the game window with its elements.
+          Runing the game with a graphical interface. 
+    """
     psdo = input("Entrez un pseudo:")
 
     pygame.init()
@@ -46,12 +51,8 @@ def begin_game():
     # boucle tant que cette condition est vraie
 
     while running:
-        # appliquer arriere plan
         screen.blit(background, (0, -400))
-
-        # verifier si le jeu a commencé
         if game.is_playing and game.is_playing != "transition":
-            # declencher les instructions
             game.update(screen)
             game.player.jump_update()
 
@@ -80,18 +81,16 @@ def begin_game():
 
         # si le joueur ferme cette fenetre
         for event in pygame.event.get():
-            # verifier que l'evenet est fermeture de fene
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
                 print("Fermeture. Aurevoir ")
                 print("Vous avez: " + str(game.score.best_score) + " points")
-                # print(score.store_score())
-
 
             # si joueur lache une touche du clavier
             elif event.type == pygame.KEYDOWN:
                 game.pressed[event.key] = True
+
                 # detecter si la touche espace est enclenchée
                 if event.key == pygame.K_SPACE:
                     game.player.launch_projectile()
